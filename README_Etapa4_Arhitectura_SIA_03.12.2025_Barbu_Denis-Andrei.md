@@ -86,11 +86,10 @@ Scrieți clar în acest README (Secțiunea 2):
 [ ] Date sintetice prin metode avansate  
 
 **Descriere detaliată:**
-[Explicați în 2-3 paragrafe cum ați generat datele, ce metode ați folosit, 
-de ce sunt relevante pentru problema voastră, cu ce parametri ați rulat simularea/achiziția]
+Procesul de generare a datelor se bazeaza pe achizitia dinamica, in timp real, a seriilor de timp financiare prin intermediul bibliotecii yfinance, care interogheaza direct API-ul Yahoo Finance. Aceasta metoda asigura actualitatea informatiilor, eliminand limitarile seturilor de date statice (fisiere CSV vechi). Pentru a asigura originalitatea si relevanta setului de date (peste 40% date prelucrate), nu ne-am limitat la preturile brute (Close), ci am implementat un pipeline de Feature Engineering. Am derivat algoritmic noi caracteristici esentiale pentru analiza: Medii Mobile Simple (SMA) pe 7 si 30 de zile pentru detectarea trendurilor, Volatilitatea (deviatia standard) pentru cuantificarea riscului si Rentabilitatea Zilnica (Daily Return) pentru a masura viteza de variatie a pretului.
 
-**Locația codului:** `src/data_acquisition/[numele_scriptului]`
-**Locația datelor:** `data/generated/` sau `data/raw/original/`
+**Locația codului:** `https://colab.research.google.com/drive/1LndQ3TslOjDxi5WO_iTze9p5aDCpDFbd#scrollTo=AsBds5-dRpkb`
+**Locația datelor:** `Locatia datelor este direct din API ul celore de la Yahoo Finance`
 
 **Dovezi:**
 - Grafic comparativ: `docs/generated_vs_real.png`
@@ -117,15 +116,19 @@ de ce sunt relevante pentru problema voastră, cu ce parametri ați rulat simula
 ### 3. Diagrama State Machine a Întregului Sistem (OBLIGATORIE)
 
 **Cerințe:**
-- **Minimum 4-6 stări clare** cu tranziții între ele
-- **Formate acceptate:** PNG/SVG, pptx, draw.io 
-- **Locație:** `docs/state_machine.*` (orice extensie)
-- **Legendă obligatorie:** 1-2 paragrafe în acest README: "De ce ați ales acest State Machine pentru nevoia voastră?"
+Formatul diagramei mele state-machine este PNG. Ea se afla in folderul `docs/` cu numele `Diagrama_state-machine.png`. Am nevoie de aceasta diagrama pentru a modela comportamentul secvential al aplicatiei si tranzitiile logice ale datelor, am proiectat o diagrama de stari UML. Aceasta ilustreaza ciclul de viata al procesului de predictie, de la interactiunea cu utilizatorul pana la vizualizarea rezultatelor finale.
 
 **Stări tipice pentru un SIA:**
 ```
-IDLE → ACQUIRE_DATA → PREPROCESS → INFERENCE → DISPLAY/ACT → LOG → [ERROR] → STOP
-                ↑______________________________________________|
+IDLE (Input Simbol) → DOWNLOAD (Yahoo API) → FEATURE_ENGINEERING (SMA/Vol) → PREPROCESS (Scale/Window) 
+        ^                      ↓                          ↓
+        |_________________ [ERROR]                  TRAINING (LSTM)
+                          (Retry/Exit)                    ↓
+                                                      INFERENCE (Predictie)
+                                                          ↓
+                                                      VISUALIZE (Matplotlib)
+                                                          ↓
+                                                        [STOP]
 ```
 
 **Exemple concrete per domeniu de inginerie:**
