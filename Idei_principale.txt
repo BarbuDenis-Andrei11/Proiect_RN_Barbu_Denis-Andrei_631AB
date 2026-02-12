@@ -1,5 +1,0 @@
--predictive a pretului bursier al unui simbol. (grafic 2)
--ia si datele de pe S&P500 pentru ceva mai complex si mai precis
--foloseste mai multe predictii de mai multe epoci, si vede care are cea mai mica eroare
--Simulator de investitie/ simuleaza ce profit ai avea daca ai face buy&hold sau am fi folosit bot AI de trade. (grafic 1)
-
