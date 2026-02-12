@@ -1,0 +1,10 @@
+{
+    "algorithm": "RandomForestRegressor",
+    "MAE_test": 13.10754221801758,
+    "Directional_Accuracy": 53.06,
+    "Best_Params": {
+        "n_estimators": 100,
+        "min_samples_split": 2,
+        "max_depth": null
+    }
+}

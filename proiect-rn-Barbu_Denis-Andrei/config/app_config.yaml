@@ -1,0 +1,26 @@
+# ==========================================
+# CONFIGURARE GENERALA APLICATIE TRADING AI
+# ==========================================
+
+app_info:
+  name: "Trading AI System"
+  version: "1.0.0"
+  student: "Barbu Denis-Andrei"
+
+data_acquisition:
+  default_ticker: "TSLA"
+  market_ticker: "^GSPC"     # S&P 500 Index
+  download_period: "2y"      # Perioada istorica
+  retry_attempts: 3
+
+preprocessing:
+  lag_window: 3              # Numarul de zile anterioare (Features)
+  test_size: 0.1             # 10% pentru testare, 90% pentru antrenare
+  drop_na: true              # Sterge randurile goale dupa shiftare
+
+paths:
+  raw_data: "data/raw"
+  processed_data: "data/processed"
+  models: "models"
+  results: "results"
+  logs: "logs"

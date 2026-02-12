@@ -1,0 +1,6 @@
+params,mean_test_score,std_test_score,rank_test_score
+"{'n_estimators': 50, 'min_samples_split': 2, 'max_depth': None}",-0.7444820914690661,2.320926539226428,2
+"{'n_estimators': 100, 'min_samples_split': 2, 'max_depth': None}",-0.719052675414028,2.2665957167683195,1
+"{'n_estimators': 200, 'min_samples_split': 2, 'max_depth': 10}",-0.7671776631284635,2.3410139743257488,5
+"{'n_estimators': 200, 'min_samples_split': 5, 'max_depth': None}",-0.7556753919106121,2.333074551485936,4
+"{'n_estimators': 50, 'min_samples_split': 5, 'max_depth': None}",-0.74671106172292,2.3300662838688795,3
